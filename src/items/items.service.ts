@@ -18,6 +18,12 @@ export class ItemsService {
         const newItem = new this.itemModel(item);;
         return await newItem.save()
     }
+    async deleteItem(id:string):Promise<Item>{
+        return await this.itemModel.findByIdAndRemove(id);
+    }
+    async updateItem(id:string,item:Item):Promise<Item>{
+        return await this.itemModel.findByIdAndUpdate(id,item,{new:true})
+    }
 
 }
 // private readonly items:Item[]=[

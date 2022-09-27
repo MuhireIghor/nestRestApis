@@ -13,18 +13,19 @@ export class ItemsController {
     getById(@Param('id') id):Promise<Item>{  
     return  this.itemService.findOne(id);
   }
-  @Delete(':id')
-  deleteItem(@Param('id') id):string{
-    return `Item deleted is ${id}`
-  }
-  @Put(':id')
-    updatetItem(@Body() updateItemDto:CreateItemDto, @Param('id') id):string{
-      return `item updated with name ${updateItemDto.name} and description:${updateItemDto.description}`
-    }
-    @Post()
-    async createItem(@Body() createItemDto:CreateItemDto):Promise<Item>{
+  @Post()
+  createItem(@Body() createItemDto:CreateItemDto):Promise<Item>{
       return this.itemService.create(createItemDto);
     }
+    @Delete(':id')
+    deleteItem(@Param('id') id):Promise<Item>{
+      return this.itemService.deleteItem(id);
+    }
+    @Put(':id')
+    updateItem(@Body() updateItemDto:CreateItemDto,@Param('id') id):Promise<Item>{
+      return this.itemService.updateItem(id,updateItemDto)
+    }
+
     
   }
   
@@ -46,3 +47,11 @@ export class ItemsController {
         // createItem(@Body() createItemDto:CreateItemDto):string{
         //   return `Name:${createItemDto.name} description:${createItemDto.description}`
         // }
+          // @Delete(':id')
+          // deleteItem(@Param('id') id):string{
+          //   return `Item deleted is ${id}`
+          // }
+          // @Put(':id')
+          //   updatetItem(@Body() updateItemDto:CreateItemDto, @Param('id') id):string{
+          //     return `item updated with name ${updateItemDto.name} and description:${updateItemDto.description}`
+          //   }
