@@ -20,7 +20,7 @@ export class ItemsController {
   // }
   @Get(':id')
   getItemById(@Param('id') id):Item{
-    return this.itemService.getOneById(id);
+    return this.itemService.getOneById(id); 
 
   }
 @Delete(':id')
