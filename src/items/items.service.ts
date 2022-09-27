@@ -13,14 +13,17 @@ export class ItemsService {
 
         },
         {
-            id:'a0681d1a441c58016bdb70424cf5ee6e',
-            name:'Vodka',
+            id:'f224a1f0f8a5171cb6c09478caf50391',
+            name:'Tekila',
             qty:12,
-            description:'Beer one'
+            description:'Beer Two'
 
         }
     ];
     findAll():Item[]{
         return this.items;
+    }
+    getOneById(id:string):Item{
+        return this.items.find((item)=>item.id === id);
     }
 }
