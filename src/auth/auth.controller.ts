@@ -9,7 +9,7 @@ export class AuthController {
     constructor(private readonly authService:AuthService){}
     @Post()
     login(@Body() userLog:UserDto ):Promise<User>{
-        return this.authService.validateUser(userLog.name,userLog.password);
+        return this.authService.validateUser(userLog);
 
     }
 
