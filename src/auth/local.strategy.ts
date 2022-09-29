@@ -5,16 +5,18 @@ import { AuthService } from "./auth.service";
 import { User } from "src/users/interfaces/user.interface";
 import { UnauthorizedException } from "@nestjs/common/exceptions";
 
-export class LocalStrategy extends PassportStrategy(Strategy){
-    constructor(private readonly authServie:AuthService){
+export class LocalStrategy extends PassportStrategy(Strategy) {
+    constructor(private readonly authServie: AuthService) {
         super();
     }
-    async validateUser(user2:User):Promise<User>{
+    async validateUser(user2: User): Promise<User> {
         const user = await this.authServie.validateUser(user2);
-        if(!user){
-           throw new UnauthorizedException();
+        if (!user) {
+            console.log('Error occured');
+
+            throw new UnauthorizedException();
         }
-return user;
+        return user;
     }
 
 
