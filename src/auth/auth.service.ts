@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { User } from 'src/users/interfaces/user.interface';
 import UsersModel from '../users/schemas/user.schema'
 import { UsersService } from 'src/users/users.service';
+import {JwtService } from '@nestjs/jwt'
 import * as bcrypt from 'bcrypt';
 
 
@@ -19,7 +20,8 @@ export class AuthService {
     }
     async login(user:User):Promise<User>{
         const foundUser= await this.userService.findUser(user);
-        const payload = {username:user.name,email:user.email}
+        const payload = {username:user.name,email:user.email};
+      
     }
 }
 

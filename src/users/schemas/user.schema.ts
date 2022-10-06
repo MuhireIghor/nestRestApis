@@ -1,4 +1,4 @@
-import mongoose, * as mogoose from 'mongoose';
+import  * as mogoose from 'mongoose';
 export default new mogoose.Schema({
     id:String,
     name:String,
