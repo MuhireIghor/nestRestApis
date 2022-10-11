@@ -6,14 +6,14 @@ import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from './local.auth.guards';
 
-@Controller()
+@Controller('auth')
 export class AuthController {
     constructor(private readonly authService: AuthService) { }
     @UseGuards(LocalAuthGuard)
     @Post('auth/login')
     async login(@Req() req: Request, @Body() userDto: UserDto): Promise<User | any> {
-        console.log(userDto)
-        return req.user;
+   
+        return this.authService.validateUser(userDto)
     }
 }
 
