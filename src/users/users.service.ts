@@ -42,5 +42,8 @@ async findUser(user:User,@Res() res?:Response ):Promise<User>{
     }
         
     }
+    async getAll():Promise<User[]>{
+        return this.userModel.find();
+    }
 }
 

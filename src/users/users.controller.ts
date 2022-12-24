@@ -23,9 +23,15 @@ updateUser(@Param('id') id,@Body() updateDto:UserDto):Promise<User>{
 
 }
 @Delete(':id')
-deleteUser(@Param('id') id){
+async deleteUser(@Param('id') id,@Res() res:Response):Promise<User>{
+    const userrecipe = this.usersService.deleteUser(id);
+    res.json({message:`user with name ${(await userrecipe).name} has been deleted successfully!`})
     return this.usersService.deleteUser(id);
 
+}
+@Get()
+getAllUsers(){
+    return this.usersService.getAll();
 }
 
 }
