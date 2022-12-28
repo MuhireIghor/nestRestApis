@@ -3,4 +3,6 @@ export interface Item{
     name:string;
     qty:number;
     description?:string;
+    color:[string];
+    price:number;
 }
