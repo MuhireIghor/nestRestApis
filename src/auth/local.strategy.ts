@@ -9,7 +9,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     constructor(private readonly authServie: AuthService) {
         super();
     }
-    async validateUser(user2: User): Promise<User> {
+    async validate(user2: User): Promise<User> {
         const user = await this.authServie.validateUser(user2);
         if (!user) {
             console.log('Error occured');
